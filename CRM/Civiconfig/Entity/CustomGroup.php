@@ -60,6 +60,13 @@ class CRM_Civiconfig_Entity_CustomGroup extends CRM_Civiconfig_Entity {
     // FIXME: This is rather hacky.
     $entityType = $params['extends'];
     switch ($entityType) {
+      case 'Organization':
+      case 'Individual':
+      case 'Household':
+        // Contact sub types can be identified by their names. No need to
+        // look up ID's.
+        return;
+        break;
       case 'Contribution':
         $entitySubType = 'FinancialType';
         break;
